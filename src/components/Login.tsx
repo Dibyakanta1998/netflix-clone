@@ -1,7 +1,11 @@
-import React, { type FC } from "react";
+import React, { useState, type FC } from "react";
 import { Header } from "./Header";
 
 export const Login: FC = () => {
+  const [isSignInForm, setIsSignInForm] = useState<boolean>(false);
+  const toggleSignInForm = () => {
+    setIsSignInForm(!isSignInForm);
+  };
   return (
     <div>
       <Header />
@@ -11,18 +15,36 @@ export const Login: FC = () => {
           alt="logo"
         />
       </div>
-      <form className="absolute w-3/12 p-12 bg-black my-36 mx-auto right-0 left-0">
+      <form className="absolute w-3/12 p-12 bg-black my-36 mx-auto right-0 left-0  text-white rounded-lg opacity-80">
+        <h1 className="font-bold text-3xl py-4">
+          {isSignInForm ? "Sign In" : "Sign Up"}
+        </h1>
+        {!isSignInForm && (
+          <input
+            type="text"
+            placeholder="Full Name"
+            className="p-4 my-4  bg-gray-700 text-black-50 w-full"
+          />
+        )}
         <input
           type="text"
           placeholder="Email Address"
-          className="p-2 m-2  bg-white"
+          className="p-4 my-4  bg-gray-700 text-black-50 w-full"
         />
         <input
           type="password"
-          placeholder="Email Address"
-          className="p-2 m-2 bg-white"
+          placeholder="Password"
+          className="p-4 my-4 bg-gray-700 text-black-50 w-full"
         />
-        <button className="p-4 m-4">Sign In</button>
+        <button className="p-4 my-6 bg-red-700 w-full rounded-lg">
+          {isSignInForm ? "Sign In" : "Sign Up"}
+        </button>
+
+        <p className="py-6 cursor-pointer" onClick={toggleSignInForm}>
+          {isSignInForm
+            ? "New to netflix? Sign Up Now"
+            : "Already Registered? Sign In Now"}
+        </p>
       </form>
     </div>
   );
