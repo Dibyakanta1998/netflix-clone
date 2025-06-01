@@ -1,11 +1,7 @@
-import { useState } from "react";
+import Body from "./components/Body";
 
 function App() {
-  return (
-    <>
-      <div className="bg-purple-100">Netflix CSS</div>
-    </>
-  );
+  return <Body />;
 }
 
 export default App;
