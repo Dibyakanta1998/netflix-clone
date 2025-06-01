@@ -21,3 +21,7 @@ version -20
 - Netflix GPT
   - Search Bar
   - Movie List
+
+
+//TODO
+After navigation,to work on responsiveness and code modularity
