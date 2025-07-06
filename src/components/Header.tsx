@@ -1,11 +1,11 @@
 import { signOut } from "firebase/auth";
 import { auth } from "../config/firebase";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../customHooks/reduxHooks";
 
 export const Header = () => {
   const navigate = useNavigate();
-  const user = useSelector((store) => store.user);
+  const user = useAppSelector((store) => store.user.userDetails);
 
   const handleSignout = () => {
     signOut(auth)
@@ -13,7 +13,7 @@ export const Header = () => {
         // Sign-out successful.
         navigate("/");
       })
-      .catch((error) => {
+      .catch(() => {
         navigate("/error");
         // An error happened.
       });
